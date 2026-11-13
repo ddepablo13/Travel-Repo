@@ -1,5 +1,7 @@
-# GTAS Power Apps
+# GTAS
 
-The current native canvas source is [PowerApps-v2](GTAS/PowerApps-v2/README.md), with 15 screens, ownership and approval contracts, deployment files and validation records.
+Download [GTAS.msapp](GTAS.msapp) and follow [opening and connection instructions](GTAS-Open-First.md).
 
-Studio assembly and tenant security tests are required before real data use. The browser workspace and original Canvas folder are earlier prototypes.
+Microsoft CLI pack/unpack verification passed. Power Apps Studio import and tenant connection/security tests remain pending. The file contains 15 native screens and the attachments form.
+
+[Deployment source and flow instructions](GTAS/PowerApps-v2/README.md)
