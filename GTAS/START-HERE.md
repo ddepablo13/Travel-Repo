@@ -1,5 +1,10 @@
 # GTAS | GDIT Travel Authorization System
 
+## Current Power Apps source
+
+Start with [Power Apps v2](PowerApps-v2/README.md) for the native application, private draft model, assigned approvals, closeout and reporting. The original Canvas folder and the browser workspace below are earlier prototypes. The v2 source requires Studio assembly and tenant security verification before using real traveler data.
+
+
 ## Present it
 
 Open **GTAS-Demo.html** in an approved browser. The demo uses fictional records and rates, stores requests in browser storage, and simulates roles through the dropdown. It runs offline and sends no notifications. Use a fresh browser profile for a clean seed. Never enter live traveler data in this demo.

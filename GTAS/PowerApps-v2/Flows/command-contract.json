@@ -1,0 +1,496 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GTAS command payload contracts",
+  "description": "Use the branch schema after switching on Operation. Authentication comes from Created By, outside this payload.",
+  "snapshot": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "schemaVersion",
+      "header",
+      "destinations",
+      "parentRequestId",
+      "expectedCycle"
+    ],
+    "properties": {
+      "schemaVersion": {
+        "const": 2
+      },
+      "header": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "ownerEmail",
+          "contactEmail",
+          "traveler",
+          "supervisor",
+          "programKey",
+          "organization",
+          "company",
+          "purpose",
+          "categories",
+          "region",
+          "tripType",
+          "departure",
+          "returnDate",
+          "airportMethod",
+          "air",
+          "rental",
+          "pov",
+          "rail",
+          "airfare",
+          "airportCost",
+          "dropMiles",
+          "miles",
+          "rentalCost",
+          "fuel",
+          "tolls",
+          "railCost",
+          "registration",
+          "misc",
+          "hotelParking",
+          "resortFees"
+        ],
+        "properties": {
+          "ownerEmail": {
+            "type": "string"
+          },
+          "contactEmail": {
+            "type": "string"
+          },
+          "traveler": {
+            "type": "string"
+          },
+          "supervisor": {
+            "type": "string"
+          },
+          "programKey": {
+            "type": "string"
+          },
+          "organization": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "categories": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "tripType": {
+            "type": "string"
+          },
+          "departure": {
+            "type": "string"
+          },
+          "returnDate": {
+            "type": "string"
+          },
+          "airportMethod": {
+            "type": "string"
+          },
+          "air": {
+            "type": "boolean"
+          },
+          "rental": {
+            "type": "boolean"
+          },
+          "pov": {
+            "type": "boolean"
+          },
+          "rail": {
+            "type": "boolean"
+          },
+          "airfare": {
+            "type": "number",
+            "minimum": 0
+          },
+          "airportCost": {
+            "type": "number",
+            "minimum": 0
+          },
+          "dropMiles": {
+            "type": "number",
+            "minimum": 0
+          },
+          "miles": {
+            "type": "number",
+            "minimum": 0
+          },
+          "rentalCost": {
+            "type": "number",
+            "minimum": 0
+          },
+          "fuel": {
+            "type": "number",
+            "minimum": 0
+          },
+          "tolls": {
+            "type": "number",
+            "minimum": 0
+          },
+          "railCost": {
+            "type": "number",
+            "minimum": 0
+          },
+          "registration": {
+            "type": "number",
+            "minimum": 0
+          },
+          "misc": {
+            "type": "number",
+            "minimum": 0
+          },
+          "hotelParking": {
+            "type": "number",
+            "minimum": 0
+          },
+          "resortFees": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      },
+      "destinations": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "key",
+            "city",
+            "region",
+            "start",
+            "rateId",
+            "quote",
+            "justification"
+          ],
+          "properties": {
+            "key": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "region": {
+              "type": "string"
+            },
+            "start": {
+              "type": "string"
+            },
+            "rateId": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "quote": {
+              "type": "number",
+              "minimum": 0
+            },
+            "justification": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "parentRequestId": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "expectedCycle": {
+        "type": "integer",
+        "minimum": 0
+      }
+    }
+  },
+  "operations": {
+    "Submit": {
+      "type": "object",
+      "required": [
+        "draftId",
+        "snapshot"
+      ],
+      "properties": {
+        "draftId": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "snapshot": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "schemaVersion",
+            "header",
+            "destinations",
+            "parentRequestId",
+            "expectedCycle"
+          ],
+          "properties": {
+            "schemaVersion": {
+              "const": 2
+            },
+            "header": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "ownerEmail",
+                "contactEmail",
+                "traveler",
+                "supervisor",
+                "programKey",
+                "organization",
+                "company",
+                "purpose",
+                "categories",
+                "region",
+                "tripType",
+                "departure",
+                "returnDate",
+                "airportMethod",
+                "air",
+                "rental",
+                "pov",
+                "rail",
+                "airfare",
+                "airportCost",
+                "dropMiles",
+                "miles",
+                "rentalCost",
+                "fuel",
+                "tolls",
+                "railCost",
+                "registration",
+                "misc",
+                "hotelParking",
+                "resortFees"
+              ],
+              "properties": {
+                "ownerEmail": {
+                  "type": "string"
+                },
+                "contactEmail": {
+                  "type": "string"
+                },
+                "traveler": {
+                  "type": "string"
+                },
+                "supervisor": {
+                  "type": "string"
+                },
+                "programKey": {
+                  "type": "string"
+                },
+                "organization": {
+                  "type": "string"
+                },
+                "company": {
+                  "type": "string"
+                },
+                "purpose": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "region": {
+                  "type": "string"
+                },
+                "tripType": {
+                  "type": "string"
+                },
+                "departure": {
+                  "type": "string"
+                },
+                "returnDate": {
+                  "type": "string"
+                },
+                "airportMethod": {
+                  "type": "string"
+                },
+                "air": {
+                  "type": "boolean"
+                },
+                "rental": {
+                  "type": "boolean"
+                },
+                "pov": {
+                  "type": "boolean"
+                },
+                "rail": {
+                  "type": "boolean"
+                },
+                "airfare": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "airportCost": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "dropMiles": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "miles": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "rentalCost": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "fuel": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "tolls": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "railCost": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "registration": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "misc": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "hotelParking": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "resortFees": {
+                  "type": "number",
+                  "minimum": 0
+                }
+              }
+            },
+            "destinations": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "key",
+                  "city",
+                  "region",
+                  "start",
+                  "rateId",
+                  "quote",
+                  "justification"
+                ],
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "city": {
+                    "type": "string"
+                  },
+                  "region": {
+                    "type": "string"
+                  },
+                  "start": {
+                    "type": "string"
+                  },
+                  "rateId": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "quote": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "justification": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "parentRequestId": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "expectedCycle": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "Decide": {
+      "type": "object",
+      "required": [
+        "outcome",
+        "comment",
+        "expectedStage"
+      ],
+      "properties": {
+        "outcome": {
+          "enum": [
+            "Approve",
+            "Return",
+            "Reject",
+            "Delegate"
+          ]
+        },
+        "comment": {
+          "type": "string"
+        },
+        "expectedStage": {
+          "type": "string"
+        }
+      }
+    },
+    "Complete": {
+      "type": "object",
+      "maxProperties": 0
+    },
+    "Close": {
+      "type": "object",
+      "required": [
+        "actual",
+        "posted",
+        "notes"
+      ],
+      "properties": {
+        "actual": {
+          "type": "number",
+          "minimum": 0
+        },
+        "posted": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "Report": {
+      "type": "object",
+      "required": [
+        "programKey",
+        "month"
+      ],
+      "properties": {
+        "programKey": {
+          "type": "string"
+        },
+        "month": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$"
+        }
+      }
+    }
+  }
+}

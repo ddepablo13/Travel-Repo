@@ -1,0 +1,339 @@
+{
+  "GTASDraftsV2": {
+    "access": "Own items read and edit. Coordinator-created drafts remain private to their creator.",
+    "versioning": true,
+    "fields": [
+      {
+        "name": "PayloadJson",
+        "type": "Note",
+        "indexed": false
+      }
+    ]
+  },
+  "GTASRequestsV2": {
+    "access": "Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters.",
+    "versioning": true,
+    "fields": [
+      {
+        "name": "SubmissionKey",
+        "type": "Text",
+        "indexed": true
+      },
+      {
+        "name": "OwnerEmail",
+        "type": "Text",
+        "indexed": true
+      },
+      {
+        "name": "Traveler",
+        "type": "Text",
+        "indexed": false
+      },
+      {
+        "name": "ProgramKey",
+        "type": "Text",
+        "indexed": true
+      },
+      {
+        "name": "Status",
+        "type": "Text",
+        "indexed": true
+      },
+      {
+        "name": "AssignedEmail",
+        "type": "Text",
+        "indexed": true
+      },
+      {
+        "name": "Departure",
+        "type": "Text",
+        "indexed": true
+      },
+      {
+        "name": "ReturnDate",
+        "type": "Text",
+        "indexed": false
+      },
+      {
+        "name": "Purpose",
+        "type": "Note",
+        "indexed": false
+      },
+      {
+        "name": "Authorized",
+        "type": "Currency",
+        "indexed": false
+      },
+      {
+        "name": "Actual",
+        "type": "Currency",
+        "indexed": false
+      },
+      {
+        "name": "Posted",
+        "type": "DateTime",
+        "indexed": false
+      },
+      {
+        "name": "CostNotes",
+        "type": "Note",
+        "indexed": false
+      },
+      {
+        "name": "Cycle",
+        "type": "Number",
+        "indexed": false
+      },
+      {
+        "name": "SnapshotJson",
+        "type": "Note",
+        "indexed": false
+      },
+      {
+        "name": "RateSnapshotJson",
+        "type": "Note",
+        "indexed": false
+      },
+      {
+        "name": "HistoryText",
+        "type": "Note",
+        "indexed": false
+      },
+      {
+        "name": "PdfUrl",
+        "type": "Text",
+        "indexed": false
+      },
+      {
+        "name": "DocumentFolderUrl",
+        "type": "Text",
+        "indexed": false
+      },
+      {
+        "name": "AppliedCommandKeys",
+        "type": "Note",
+        "indexed": false
+      }
+    ]
+  },
+  "GTASCommandsV2": {
+    "access": "Invoker can add and read own items. No update or delete. Service handles all result fields.",
+    "versioning": true,
+    "fields": [
+      {
+        "name": "Operation",
+        "type": "Text",
+        "indexed": true
+      },
+      {
+        "name": "RequestId",
+        "type": "Number",
+        "indexed": true
+      },
+      {
+        "name": "ExpectedCycle",
+        "type": "Number",
+        "indexed": false
+      },
+      {
+        "name": "PayloadJson",
+        "type": "Note",
+        "indexed": false
+      },
+      {
+        "name": "State",
+        "type": "Text",
+        "indexed": true
+      },
+      {
+        "name": "ResultMessage",
+        "type": "Note",
+        "indexed": false
+      },
+      {
+        "name": "ResultRequestId",
+        "type": "Number",
+        "indexed": false
+      },
+      {
+        "name": "ResultUrl",
+        "type": "Text",
+        "indexed": false
+      },
+      {
+        "name": "LeaseUntil",
+        "type": "DateTime",
+        "indexed": false
+      },
+      {
+        "name": "Attempts",
+        "type": "Number",
+        "indexed": false
+      }
+    ]
+  },
+  "GTASAccessV2": {
+    "access": "Administrator write only. Grant each user read only to their own assignments. Service can read all.",
+    "versioning": true,
+    "fields": [
+      {
+        "name": "UserEmail",
+        "type": "Text",
+        "indexed": true
+      },
+      {
+        "name": "ProgramKey",
+        "type": "Text",
+        "indexed": true
+      },
+      {
+        "name": "Enabled",
+        "type": "Boolean",
+        "indexed": false
+      },
+      {
+        "name": "CanCoordinate",
+        "type": "Boolean",
+        "indexed": false
+      },
+      {
+        "name": "CanReport",
+        "type": "Boolean",
+        "indexed": false
+      }
+    ]
+  },
+  "GTASRatesV2": {
+    "access": "Authenticated app users read only. Rate administrators write.",
+    "versioning": true,
+    "fields": [
+      {
+        "name": "City",
+        "type": "Text",
+        "indexed": true
+      },
+      {
+        "name": "Region",
+        "type": "Text",
+        "indexed": true
+      },
+      {
+        "name": "EffectiveFrom",
+        "type": "DateTime",
+        "indexed": false
+      },
+      {
+        "name": "EffectiveTo",
+        "type": "DateTime",
+        "indexed": false
+      },
+      {
+        "name": "Lodging",
+        "type": "Currency",
+        "indexed": false
+      },
+      {
+        "name": "Mie",
+        "type": "Currency",
+        "indexed": false
+      },
+      {
+        "name": "CurrencyCode",
+        "type": "Text",
+        "indexed": false
+      },
+      {
+        "name": "Source",
+        "type": "Text",
+        "indexed": false
+      }
+    ]
+  },
+  "GTASPolicyV2": {
+    "access": "App users read only for approved programs. Policy administrators write.",
+    "versioning": true,
+    "fields": [
+      {
+        "name": "ProgramKey",
+        "type": "Text",
+        "indexed": true
+      },
+      {
+        "name": "Enabled",
+        "type": "Boolean",
+        "indexed": false
+      },
+      {
+        "name": "MileageRate",
+        "type": "Number",
+        "indexed": false
+      },
+      {
+        "name": "SameDayMieAllowed",
+        "type": "Boolean",
+        "indexed": false
+      },
+      {
+        "name": "SameDayMieAmount",
+        "type": "Currency",
+        "indexed": false
+      },
+      {
+        "name": "ProgramManagerEmail",
+        "type": "Text",
+        "indexed": false
+      },
+      {
+        "name": "CoordinatorEmail",
+        "type": "Text",
+        "indexed": false
+      },
+      {
+        "name": "ItOpsEmail",
+        "type": "Text",
+        "indexed": false
+      },
+      {
+        "name": "CorEmail",
+        "type": "Text",
+        "indexed": false
+      }
+    ]
+  },
+  "GTASLedgerV2": {
+    "access": "Service-only read and write. Unique Title is actor directory ID plus command key.",
+    "versioning": true,
+    "fields": [
+      {
+        "name": "PayloadHash",
+        "type": "Text",
+        "indexed": false
+      },
+      {
+        "name": "Operation",
+        "type": "Text",
+        "indexed": false
+      },
+      {
+        "name": "RequestId",
+        "type": "Number",
+        "indexed": true
+      },
+      {
+        "name": "Phase",
+        "type": "Text",
+        "indexed": true
+      },
+      {
+        "name": "ResultJson",
+        "type": "Note",
+        "indexed": false
+      },
+      {
+        "name": "LeaseUntil",
+        "type": "DateTime",
+        "indexed": false
+      }
+    ]
+  }
+}

@@ -1,3 +1,5 @@
-# GTAS
+# GTAS Power Apps
 
-See GTAS/START-HERE.md for setup and limitations. The browser workspace uses fictional records and local storage. Native Power Apps import and cloud flows require tenant assembly and validation.
+The current native canvas source is [PowerApps-v2](GTAS/PowerApps-v2/README.md), with 15 screens, ownership and approval contracts, deployment files and validation records.
+
+Studio assembly and tenant security tests are required before real data use. The browser workspace and original Canvas folder are earlier prototypes.

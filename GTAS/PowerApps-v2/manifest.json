@@ -1,0 +1,35 @@
+{
+  "version": "2.0-source",
+  "screens": [
+    "Submit",
+    "Request",
+    "Reports",
+    "Trip",
+    "Traveler",
+    "Documents",
+    "Decision",
+    "Transport",
+    "Rates",
+    "WorkQueue",
+    "Itinerary",
+    "CommandStatus",
+    "Expenses",
+    "Closeout",
+    "Home"
+  ],
+  "startScreen": "Home",
+  "designSize": {
+    "width": 1200,
+    "height": 744
+  },
+  "dataSources": [
+    "GTASDraftsV2",
+    "GTASRequestsV2",
+    "GTASCommandsV2",
+    "GTASAccessV2",
+    "GTASRatesV2",
+    "GTASPolicyV2"
+  ],
+  "status": "Authored source. Requires Studio assembly and tenant validation.",
+  "attachmentForm": "Studio-generated DocumentsForm on Documents screen"
+}

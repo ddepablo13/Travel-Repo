@@ -1,0 +1,67 @@
+List,Internal name,SharePoint type,Indexed,Access
+GTASDraftsV2,Title,Text,Yes,Own items read and edit. Coordinator-created drafts remain private to their creator.
+GTASDraftsV2,PayloadJson,Note,False,Own items read and edit. Coordinator-created drafts remain private to their creator.
+GTASRequestsV2,Title,Text,Yes,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,SubmissionKey,Text,True,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,OwnerEmail,Text,True,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,Traveler,Text,False,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,ProgramKey,Text,True,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,Status,Text,True,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,AssignedEmail,Text,True,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,Departure,Text,True,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,ReturnDate,Text,False,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,Purpose,Note,False,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,Authorized,Currency,False,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,Actual,Currency,False,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,Posted,DateTime,False,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,CostNotes,Note,False,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,Cycle,Number,False,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,SnapshotJson,Note,False,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,RateSnapshotJson,Note,False,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,HistoryText,Note,False,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,PdfUrl,Text,False,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,DocumentFolderUrl,Text,False,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASRequestsV2,AppliedCommandKeys,Note,False,"Service write only. Item-level read grants to traveler, assigned approver and authorized program coordinators/reporters."
+GTASCommandsV2,Title,Text,Yes,Invoker can add and read own items. No update or delete. Service handles all result fields.
+GTASCommandsV2,Operation,Text,True,Invoker can add and read own items. No update or delete. Service handles all result fields.
+GTASCommandsV2,RequestId,Number,True,Invoker can add and read own items. No update or delete. Service handles all result fields.
+GTASCommandsV2,ExpectedCycle,Number,False,Invoker can add and read own items. No update or delete. Service handles all result fields.
+GTASCommandsV2,PayloadJson,Note,False,Invoker can add and read own items. No update or delete. Service handles all result fields.
+GTASCommandsV2,State,Text,True,Invoker can add and read own items. No update or delete. Service handles all result fields.
+GTASCommandsV2,ResultMessage,Note,False,Invoker can add and read own items. No update or delete. Service handles all result fields.
+GTASCommandsV2,ResultRequestId,Number,False,Invoker can add and read own items. No update or delete. Service handles all result fields.
+GTASCommandsV2,ResultUrl,Text,False,Invoker can add and read own items. No update or delete. Service handles all result fields.
+GTASCommandsV2,LeaseUntil,DateTime,False,Invoker can add and read own items. No update or delete. Service handles all result fields.
+GTASCommandsV2,Attempts,Number,False,Invoker can add and read own items. No update or delete. Service handles all result fields.
+GTASAccessV2,Title,Text,Yes,Administrator write only. Grant each user read only to their own assignments. Service can read all.
+GTASAccessV2,UserEmail,Text,True,Administrator write only. Grant each user read only to their own assignments. Service can read all.
+GTASAccessV2,ProgramKey,Text,True,Administrator write only. Grant each user read only to their own assignments. Service can read all.
+GTASAccessV2,Enabled,Boolean,False,Administrator write only. Grant each user read only to their own assignments. Service can read all.
+GTASAccessV2,CanCoordinate,Boolean,False,Administrator write only. Grant each user read only to their own assignments. Service can read all.
+GTASAccessV2,CanReport,Boolean,False,Administrator write only. Grant each user read only to their own assignments. Service can read all.
+GTASRatesV2,Title,Text,Yes,Authenticated app users read only. Rate administrators write.
+GTASRatesV2,City,Text,True,Authenticated app users read only. Rate administrators write.
+GTASRatesV2,Region,Text,True,Authenticated app users read only. Rate administrators write.
+GTASRatesV2,EffectiveFrom,DateTime,False,Authenticated app users read only. Rate administrators write.
+GTASRatesV2,EffectiveTo,DateTime,False,Authenticated app users read only. Rate administrators write.
+GTASRatesV2,Lodging,Currency,False,Authenticated app users read only. Rate administrators write.
+GTASRatesV2,Mie,Currency,False,Authenticated app users read only. Rate administrators write.
+GTASRatesV2,CurrencyCode,Text,False,Authenticated app users read only. Rate administrators write.
+GTASRatesV2,Source,Text,False,Authenticated app users read only. Rate administrators write.
+GTASPolicyV2,Title,Text,Yes,App users read only for approved programs. Policy administrators write.
+GTASPolicyV2,ProgramKey,Text,True,App users read only for approved programs. Policy administrators write.
+GTASPolicyV2,Enabled,Boolean,False,App users read only for approved programs. Policy administrators write.
+GTASPolicyV2,MileageRate,Number,False,App users read only for approved programs. Policy administrators write.
+GTASPolicyV2,SameDayMieAllowed,Boolean,False,App users read only for approved programs. Policy administrators write.
+GTASPolicyV2,SameDayMieAmount,Currency,False,App users read only for approved programs. Policy administrators write.
+GTASPolicyV2,ProgramManagerEmail,Text,False,App users read only for approved programs. Policy administrators write.
+GTASPolicyV2,CoordinatorEmail,Text,False,App users read only for approved programs. Policy administrators write.
+GTASPolicyV2,ItOpsEmail,Text,False,App users read only for approved programs. Policy administrators write.
+GTASPolicyV2,CorEmail,Text,False,App users read only for approved programs. Policy administrators write.
+GTASLedgerV2,Title,Text,Yes,Service-only read and write. Unique Title is actor directory ID plus command key.
+GTASLedgerV2,PayloadHash,Text,False,Service-only read and write. Unique Title is actor directory ID plus command key.
+GTASLedgerV2,Operation,Text,False,Service-only read and write. Unique Title is actor directory ID plus command key.
+GTASLedgerV2,RequestId,Number,True,Service-only read and write. Unique Title is actor directory ID plus command key.
+GTASLedgerV2,Phase,Text,True,Service-only read and write. Unique Title is actor directory ID plus command key.
+GTASLedgerV2,ResultJson,Note,False,Service-only read and write. Unique Title is actor directory ID plus command key.
+GTASLedgerV2,LeaseUntil,DateTime,False,Service-only read and write. Unique Title is actor directory ID plus command key.

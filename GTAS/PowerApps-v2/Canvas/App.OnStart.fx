@@ -1,0 +1,12 @@
+Set(Theme,{Navy:ColorValue("#1A204C"),Accent:ColorValue("#21409A"),Gold:ColorValue("#FFBE2E"),Background:ColorValue("#F4F6F9"),Surface:ColorValue("#FCFDFF"),Ink:ColorValue("#293340"),Muted:ColorValue("#52565C"),Line:ColorValue("#D9DFEA"),Border:ColorValue("#757575"),Error:ColorValue("#A32121")});
+Set(busy,false);
+Set(dirty,false);
+Set(message,"");
+Set(showDrafts,true);
+ClearCollect(access,Filter(GTASAccessV2,UserEmail=Lower(User().Email) && Enabled=true));
+Set(d,{ownerEmail:"",contactEmail:"",traveler:"",supervisor:"",programKey:"",organization:"GDIT",company:"",purpose:"",categories:"",region:"Domestic",tripType:"Overnight",departure:"",returnDate:"",air:false,rental:false,pov:false,rail:false,airportMethod:"Parking",airfare:0,airportCost:0,dropMiles:0,miles:0,rentalCost:0,fuel:0,tolls:0,railCost:0,registration:0,misc:0,hotelParking:0,resortFees:0});
+ClearCollect(stops,{key:"",city:"",region:"",start:"",rateId:0,quote:0,justification:""});
+Clear(stops);
+Set(parentRequestId,0);
+Set(expectedCycle,0);
+Set(commandKey,Text(GUID()));
