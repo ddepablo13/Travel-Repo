@@ -1,0 +1,45 @@
+- TitleRequeststatus:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Request status\""
+      X: "=24"
+      Y: "=12"
+      Width: "=700"
+      Height: "=64"
+      Color: "=ColorValue(\"#21409A\")"
+      Size: "=27"
+      Font: "=Font.Georgia"
+- BackRequeststatus:
+    Control: Classic/Button@2.2.0
+    Properties:
+      Text: "=\"Requests\""
+      X: "=1040"
+      Y: "=22"
+      Width: "=130"
+      Height: "=38"
+      Fill: "=ColorValue(\"#21409A\")"
+      Color: "=Color.White"
+      OnSelect: "=Navigate(Queue)"
+- RequestDetails:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=r.Title & Char(10) & r.Traveler & \"  \u2022  \" & r.Status & Char(10) & r.Departure & \" to \" & r.ReturnDate & Char(10) & r.Purpose & Char(10) & \"Authorized  \" & Text(r.Authorized,\"[$-en-US]$#,##0.00\") & Char(10) & \"Actual  \" & If(IsBlank(r.Actual),\"\u2014\",Text(r.Actual,\"[$-en-US]$#,##0.00\")) & Char(10) & Coalesce(r.LatestComment,\"\")"
+      X: "=24"
+      Y: "=100"
+      Width: "=980"
+      Height: "=300"
+      Color: "=ColorValue(\"#21409A\")"
+      VerticalAlign: "=VerticalAlign.Top"
+      Size: "=18"
+- OpenAuthorization:
+    Control: Classic/Button@2.2.0
+    Properties:
+      Text: "=\"Open authorization PDF\""
+      X: "=24"
+      Y: "=423"
+      Width: "=240"
+      Height: "=38"
+      Fill: "=ColorValue(\"#21409A\")"
+      Color: "=Color.White"
+      OnSelect: "=Launch(r.PdfUrl)"
+      Visible: "=!IsBlank(r.PdfUrl)"

@@ -1,0 +1,45 @@
+List,Internal name,Type,Rules
+GTASRequests,Title,Single line text,Service-generated GTAS-YYYY-00000 using creation year and SharePoint ID
+GTASRequests,Traveler,Single line text,Required at submit
+GTASRequests,TravelerEmail,Single line text,Optional contact address
+GTASRequests,Supervisor,Single line text,Required at submit; use directory-backed selection for production
+GTASRequests,Organization,Single line text,GDIT or Subcontractor
+GTASRequests,Company,Single line text,Required for subcontractor
+GTASRequests,Purpose,Multiple lines plain text,Required at submit
+GTASRequests,Categories,Single line text,"Conference, Meeting, Site Visit, Training, Other"
+GTASRequests,TravelRegion,Single line text,Domestic or International
+GTASRequests,TripType,Single line text,Same-Day or Overnight
+GTASRequests,Departure,Single line text,ISO date; indexed
+GTASRequests,ReturnDate,Single line text,ISO date
+GTASRequests,ItineraryJson,Multiple lines plain text,"Array with City, Region, Start, Lodge, Mie, Quote, Why"
+GTASRequests,Transportation,Currency USD,Canvas pilot aggregate
+GTASRequests,Parking,Currency USD,Hotel parking
+GTASRequests,Resort,Currency USD,Resort fees
+GTASRequests,OtherCost,Currency USD,Canvas pilot aggregate
+GTASRequests,Authorized,Currency USD,Service-owned approved estimate snapshot
+GTASRequests,Actual,Currency USD,Nullable
+GTASRequests,Posted,Date only,Nullable
+GTASRequests,CostNotes,Multiple lines plain text,Optional
+GTASRequests,Status,Single line text,Indexed; see flow state model
+GTASRequests,LatestComment,Multiple lines plain text,Summary for display
+GTASRequests,PdfUrl,Single line text,Restricted library URL
+GTASRequests,SubmissionCycle,Number integer,Starts at zero; increments on each submit
+GTASRequests,ActiveApprovalId,Single line text,Service-owned
+GTASRequests,TravelerPrincipal,Person,Required for on-behalf ownership
+GTASRequests,ExpenseJson,Multiple lines plain text,Production itemized transport and other cost details
+GTASApprovals,Title,Single line text,Unique stage key request ID and cycle and stage
+GTASApprovals,RequestId,Number integer,Indexed parent list ID
+GTASApprovals,Cycle,Number integer,Submission revision
+GTASApprovals,Stage,Single line text,Program Manager or Coordinator Review or IT OPS or COR
+GTASApprovals,AssignedTo,Person,Resolved approved identity
+GTASApprovals,RespondedBy,Person,Actual decision identity
+GTASApprovals,Outcome,Single line text,Approve or Return for revision or Reject or Delegate
+GTASApprovals,Comment,Multiple lines plain text,Decision remarks
+GTASApprovals,RespondedUtc,Date and time,UTC audit timestamp
+GTASApprovals,ApprovalId,Single line text,Provider approval ID
+GTASRates,Title,Single line text,Unique locality code and effective range
+GTASRates,EffectiveFrom,Date only,Inclusive
+GTASRates,EffectiveTo,Date only,Inclusive
+GTASRates,Lodging,Currency USD,Nightly cap
+GTASRates,Mie,Currency USD,Daily allowance
+GTASRates,Source,Single line text,Approved source and version

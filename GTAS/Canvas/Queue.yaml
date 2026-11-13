@@ -1,0 +1,94 @@
+- TitleGTASrequests:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"GTAS requests\""
+      X: "=24"
+      Y: "=12"
+      Width: "=700"
+      Height: "=64"
+      Color: "=ColorValue(\"#21409A\")"
+      Size: "=27"
+      Font: "=Font.Georgia"
+- BackGTASrequests:
+    Control: Classic/Button@2.2.0
+    Properties:
+      Text: "=\"Requests\""
+      X: "=1040"
+      Y: "=22"
+      Width: "=130"
+      Height: "=38"
+      Fill: "=ColorValue(\"#21409A\")"
+      Color: "=Color.White"
+      OnSelect: "=Navigate(Queue)"
+- NewRequest:
+    Control: Classic/Button@2.2.0
+    Properties:
+      Text: "=\"New request\""
+      X: "=24"
+      Y: "=92"
+      Width: "=145"
+      Height: "=38"
+      Fill: "=ColorValue(\"#21409A\")"
+      Color: "=Color.White"
+      OnSelect: "=Set(r,Blank()); Clear(Stops); Navigate(EditTrip)"
+- RefreshRequests:
+    Control: Classic/Button@2.2.0
+    Properties:
+      Text: "=\"Refresh\""
+      X: "=181"
+      Y: "=92"
+      Width: "=110"
+      Height: "=38"
+      Fill: "=ColorValue(\"#21409A\")"
+      Color: "=Color.White"
+      OnSelect: "=Refresh(GTASRequests)"
+- OpenReport:
+    Control: Classic/Button@2.2.0
+    Properties:
+      Text: "=\"Monthly report\""
+      X: "=304"
+      Y: "=92"
+      Width: "=150"
+      Height: "=38"
+      Fill: "=ColorValue(\"#21409A\")"
+      Color: "=Color.White"
+      OnSelect: "=Navigate(Monthly)"
+- FindNumberLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Request number\""
+      X: "=24"
+      Y: "=155"
+      Width: "=310"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- FindNumber:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=\"\""
+      X: "=24"
+      Y: "=186"
+      Width: "=310"
+      Height: "=36"
+      AccessibleLabel: "=\"Request number\""
+- FindRequest:
+    Control: Classic/Button@2.2.0
+    Properties:
+      Text: "=\"Open request\""
+      X: "=350"
+      Y: "=186"
+      Width: "=150"
+      Height: "=38"
+      Fill: "=ColorValue(\"#21409A\")"
+      Color: "=Color.White"
+      OnSelect: "=Set(r,LookUp(GTASRequests,Title=Trim(FindNumber.Text))); If(IsBlank(r),Notify(\"Request not found\",NotificationType.Error),If(r.Status in [\"Draft\",\"Returned\"],ClearCollect(Stops,ForAll(Table(ParseJSON(r.ItineraryJson)),{City:Text(ThisRecord.Value.City),Region:Text(ThisRecord.Value.Region),Start:DateValue(Text(ThisRecord.Value.Start)),Lodge:Value(ThisRecord.Value.Lodge),Mie:Value(ThisRecord.Value.Mie),Quote:Value(ThisRecord.Value.Quote),Why:Text(ThisRecord.Value.Why)})); Navigate(EditTrip),Navigate(Review)))"
+- QueueList:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=Concat(FirstN(SortByColumns(GTASRequests,\"ID\",SortOrder.Descending),12),Title & \"   \u2022   \" & Traveler & \"   \u2022   \" & Status,Char(10)&Char(10))"
+      X: "=24"
+      Y: "=254"
+      Width: "=1120"
+      Height: "=456"
+      Color: "=ColorValue(\"#21409A\")"
+      VerticalAlign: "=VerticalAlign.Top"

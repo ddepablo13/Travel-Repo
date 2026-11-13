@@ -1,0 +1,50 @@
+- TitleMonthlyreport:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Monthly report\""
+      X: "=24"
+      Y: "=12"
+      Width: "=700"
+      Height: "=64"
+      Color: "=ColorValue(\"#21409A\")"
+      Size: "=27"
+      Font: "=Font.Georgia"
+- BackMonthlyreport:
+    Control: Classic/Button@2.2.0
+    Properties:
+      Text: "=\"Requests\""
+      X: "=1040"
+      Y: "=22"
+      Width: "=130"
+      Height: "=38"
+      Fill: "=ColorValue(\"#21409A\")"
+      Color: "=Color.White"
+      OnSelect: "=Navigate(Queue)"
+- ReportMonthLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Departure month YYYY-MM\""
+      X: "=24"
+      Y: "=95"
+      Width: "=300"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- ReportMonth:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=Text(Today(),\"yyyy-mm\")"
+      X: "=24"
+      Y: "=126"
+      Width: "=300"
+      Height: "=36"
+      AccessibleLabel: "=\"Departure month YYYY-MM\""
+- ReportRows:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=Concat(FirstN(Filter(GTASRequests,StartsWith(Departure,ReportMonth.Text) && (Status=\"Approved\" || Status=\"Travel Completed\" || Status=\"Closed\")),20),Traveler & \"  \u2022  \" & Departure & \" to \" & ReturnDate & \"  \u2022  \" & Concat(Table(ParseJSON(ItineraryJson)),Text(ThisRecord.Value.City),\" / \") & \"  \u2022  \" & Text(Authorized,\"[$-en-US]$#,##0.00\") & \" authorized  \u2022  \" & If(IsBlank(Actual),\"actual pending\",Text(Actual,\"[$-en-US]$#,##0.00\") & \" actual  \u2022  \" & Text(Actual-Authorized,\"[$-en-US]$#,##0.00\") & \" variance\"),Char(10)&Char(10))"
+      X: "=24"
+      Y: "=185"
+      Width: "=1130"
+      Height: "=500"
+      Color: "=ColorValue(\"#21409A\")"
+      VerticalAlign: "=VerticalAlign.Top"

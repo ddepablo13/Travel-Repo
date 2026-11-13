@@ -1,0 +1,489 @@
+- TitleTravelrequest:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Travel request\""
+      X: "=24"
+      Y: "=12"
+      Width: "=700"
+      Height: "=64"
+      Color: "=ColorValue(\"#21409A\")"
+      Size: "=27"
+      Font: "=Font.Georgia"
+- BackTravelrequest:
+    Control: Classic/Button@2.2.0
+    Properties:
+      Text: "=\"Requests\""
+      X: "=1040"
+      Y: "=22"
+      Width: "=130"
+      Height: "=38"
+      Fill: "=ColorValue(\"#21409A\")"
+      Color: "=Color.White"
+      OnSelect: "=Navigate(Queue)"
+- TravelerLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Traveler name\""
+      X: "=24"
+      Y: "=76"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- Traveler:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=r.Traveler"
+      X: "=24"
+      Y: "=107"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Traveler name\""
+- SupervisorLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Supervisor\""
+      X: "=310"
+      Y: "=76"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- Supervisor:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=r.Supervisor"
+      X: "=310"
+      Y: "=107"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Supervisor\""
+- EmailLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Traveler email (optional)\""
+      X: "=596"
+      Y: "=76"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- Email:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=r.TravelerEmail"
+      X: "=596"
+      Y: "=107"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Traveler email (optional)\""
+- CompanyLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Subcontractor company\""
+      X: "=882"
+      Y: "=76"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+      Visible: "=Org.Selected.Value=\"Subcontractor\""
+- Company:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=r.Company"
+      X: "=882"
+      Y: "=107"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Subcontractor company\""
+      Visible: "=Org.Selected.Value=\"Subcontractor\""
+- PurposeLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Travel purpose\""
+      X: "=24"
+      Y: "=153"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- Purpose:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=r.Purpose"
+      X: "=24"
+      Y: "=184"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Travel purpose\""
+- CategoriesLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Categories, comma separated\""
+      X: "=310"
+      Y: "=153"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- Categories:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=r.Categories"
+      X: "=310"
+      Y: "=184"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Categories, comma separated\""
+- DepartureLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Departure YYYY-MM-DD\""
+      X: "=596"
+      Y: "=153"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- Departure:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=Coalesce(r.Departure,Text(Today(),\"yyyy-mm-dd\"))"
+      X: "=596"
+      Y: "=184"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Departure YYYY-MM-DD\""
+- ReturnDateLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Return YYYY-MM-DD\""
+      X: "=882"
+      Y: "=153"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- ReturnDate:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=Coalesce(r.ReturnDate,Text(Today()+1,\"yyyy-mm-dd\"))"
+      X: "=882"
+      Y: "=184"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Return YYYY-MM-DD\""
+- CityLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Destination city\""
+      X: "=24"
+      Y: "=299"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- City:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=\"\""
+      X: "=24"
+      Y: "=330"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Destination city\""
+- RegionLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"State or province and country\""
+      X: "=310"
+      Y: "=299"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- Region:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=\"\""
+      X: "=310"
+      Y: "=330"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"State or province and country\""
+- StopDateLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"First day YYYY-MM-DD\""
+      X: "=596"
+      Y: "=299"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- StopDate:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=Departure.Text"
+      X: "=596"
+      Y: "=330"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"First day YYYY-MM-DD\""
+- RateLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Nightly lodging rate\""
+      X: "=882"
+      Y: "=299"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+      Visible: "=Trip.Selected.Value=\"Overnight\""
+- Rate:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=\"\""
+      X: "=882"
+      Y: "=330"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Nightly lodging rate\""
+      Visible: "=Trip.Selected.Value=\"Overnight\""
+- MieLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Daily M&IE rate\""
+      X: "=24"
+      Y: "=375"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+      Visible: "=Trip.Selected.Value=\"Overnight\""
+- Mie:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=\"\""
+      X: "=24"
+      Y: "=406"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Daily M&IE rate\""
+      Visible: "=Trip.Selected.Value=\"Overnight\""
+- QuoteLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Nightly quote\""
+      X: "=310"
+      Y: "=375"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+      Visible: "=Trip.Selected.Value=\"Overnight\""
+- Quote:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=\"\""
+      X: "=310"
+      Y: "=406"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Nightly quote\""
+      Visible: "=Trip.Selected.Value=\"Overnight\""
+- ReasonLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Above-rate justification\""
+      X: "=596"
+      Y: "=375"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+      Visible: "=Trip.Selected.Value=\"Overnight\" && IfError(Value(Quote.Text)>Value(Rate.Text),false)"
+- Reason:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=\"\""
+      X: "=596"
+      Y: "=406"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Above-rate justification\""
+      Visible: "=Trip.Selected.Value=\"Overnight\" && IfError(Value(Quote.Text)>Value(Rate.Text),false)"
+- TransportationLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Transportation total (USD)\""
+      X: "=24"
+      Y: "=550"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- Transportation:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=Text(Coalesce(r.Transportation,0))"
+      X: "=24"
+      Y: "=581"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Transportation total (USD)\""
+- ParkingLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Hotel parking\""
+      X: "=310"
+      Y: "=550"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+      Visible: "=Trip.Selected.Value=\"Overnight\""
+- Parking:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=Text(Coalesce(r.Parking,0))"
+      X: "=310"
+      Y: "=581"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Hotel parking\""
+      Visible: "=Trip.Selected.Value=\"Overnight\""
+- ResortLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Resort fees\""
+      X: "=596"
+      Y: "=550"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+      Visible: "=Trip.Selected.Value=\"Overnight\""
+- Resort:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=Text(Coalesce(r.Resort,0))"
+      X: "=596"
+      Y: "=581"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Resort fees\""
+      Visible: "=Trip.Selected.Value=\"Overnight\""
+- OtherLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Registration and other expenses\""
+      X: "=882"
+      Y: "=550"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- Other:
+    Control: Classic/TextInput@2.3.2
+    Properties:
+      Default: "=Text(Coalesce(r.OtherCost,0))"
+      X: "=882"
+      Y: "=581"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Registration and other expenses\""
+- OrgLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Organization\""
+      X: "=24"
+      Y: "=226"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- Org:
+    Control: Classic/DropDown@2.3.1
+    Properties:
+      Items: "=[\"GDIT\",\"Subcontractor\"]"
+      Default: "=Coalesce(r.Organization,First(Self.Items).Value)"
+      X: "=24"
+      Y: "=257"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Organization\""
+- TripLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Trip type\""
+      X: "=310"
+      Y: "=226"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- Trip:
+    Control: Classic/DropDown@2.3.1
+    Properties:
+      Items: "=[\"Overnight\",\"Same-Day\"]"
+      Default: "=Coalesce(r.TripType,First(Self.Items).Value)"
+      X: "=310"
+      Y: "=257"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Trip type\""
+- ScopeLabel:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=\"Travel region\""
+      X: "=596"
+      Y: "=226"
+      Width: "=246"
+      Height: "=32"
+      Color: "=ColorValue(\"#21409A\")"
+- Scope:
+    Control: Classic/DropDown@2.3.1
+    Properties:
+      Items: "=[\"Domestic\",\"International\"]"
+      Default: "=Coalesce(r.TravelRegion,First(Self.Items).Value)"
+      X: "=596"
+      Y: "=257"
+      Width: "=246"
+      Height: "=36"
+      AccessibleLabel: "=\"Travel region\""
+- AddStop:
+    Control: Classic/Button@2.2.0
+    Properties:
+      Text: "=\"Add destination\""
+      X: "=882"
+      Y: "=405"
+      Width: "=170"
+      Height: "=38"
+      Fill: "=ColorValue(\"#21409A\")"
+      Color: "=Color.White"
+      OnSelect: "=IfError(If(IsBlank(Trim(City.Text)) || IsBlank(Trim(Region.Text)) || !IsMatch(StopDate.Text,\"\\d{4}-\\d{2}-\\d{2}\") || (Trip.Selected.Value=\"Overnight\" && (IsBlank(Rate.Text) || IsBlank(Mie.Text) || Min(Value(Rate.Text),Value(Mie.Text),Coalesce(Value(Quote.Text),0))<0 || (Value(Quote.Text)>Value(Rate.Text) && IsBlank(Trim(Reason.Text))))),Notify(\"Check destination, dates, rates and justification.\",NotificationType.Error),Collect(Stops,{City:Trim(City.Text),Region:Trim(Region.Text),Start:DateValue(StopDate.Text,\"en-US\"),Lodge:If(Trip.Selected.Value=\"Overnight\",Value(Rate.Text),Blank()),Mie:If(Trip.Selected.Value=\"Overnight\",Value(Mie.Text),Blank()),Quote:If(Trip.Selected.Value=\"Overnight\",Coalesce(Value(Quote.Text),0),0),Why:Reason.Text})),Notify(\"Check destination date and rates.\",NotificationType.Error))"
+- RemoveStop:
+    Control: Classic/Button@2.2.0
+    Properties:
+      Text: "=\"Remove last\""
+      X: "=882"
+      Y: "=451"
+      Width: "=170"
+      Height: "=38"
+      Fill: "=ColorValue(\"#21409A\")"
+      Color: "=Color.White"
+      OnSelect: "=If(!IsEmpty(Stops),Remove(Stops,Last(Stops)))"
+- StopList:
+    Control: Label@2.5.1
+    Properties:
+      Text: "=Concat(Stops,City & \", \" & Region & \"   \" & Text(Start,\"yyyy-mm-dd\"),Char(10))"
+      X: "=24"
+      Y: "=460"
+      Width: "=820"
+      Height: "=82"
+      Color: "=ColorValue(\"#21409A\")"
+      VerticalAlign: "=VerticalAlign.Top"
+- SaveDraft:
+    Control: Classic/Button@2.2.0
+    Properties:
+      Text: "=\"Save draft\""
+      X: "=24"
+      Y: "=652"
+      Width: "=130"
+      Height: "=38"
+      Fill: "=ColorValue(\"#21409A\")"
+      Color: "=Color.White"
+      OnSelect: "=IfError(With({d:DateValue(Departure.Text,\"en-US\"),e:DateValue(ReturnDate.Text,\"en-US\"),vTransport:Coalesce(Value(Transportation.Text),0),vOther:Coalesce(Value(Other.Text),0),vParking:If(Trip.Selected.Value=\"Overnight\",Coalesce(Value(Parking.Text),0),0),vResort:If(Trip.Selected.Value=\"Overnight\",Coalesce(Value(Resort.Text),0),0)},If(Min(vTransport,vOther,vParking,vResort)<0,Notify(\"Check required fields, dates, itinerary and costs.\",NotificationType.Error),Set(r,Patch(GTASRequests,If(IsBlank(r),Defaults(GTASRequests),r),{Traveler:Trim(Traveler.Text),TravelerEmail:Trim(Email.Text),Supervisor:Trim(Supervisor.Text),Organization:Org.Selected.Value,Company:If(Org.Selected.Value=\"Subcontractor\",Trim(Company.Text),Blank()),Purpose:Trim(Purpose.Text),Categories:Categories.Text,TravelRegion:Scope.Selected.Value,TripType:Trip.Selected.Value,Departure:Departure.Text,ReturnDate:ReturnDate.Text,ItineraryJson:JSON(Stops,JSONFormat.Compact),Transportation:vTransport,Parking:vParking,Resort:vResort,OtherCost:vOther,Authorized:If(Trip.Selected.Value=\"Overnight\",Round(Sum(Stops As s,With({nextDay:Coalesce(Min(Filter(Stops,Start>s.Start),Start),DateAdd(e,1))},s.Lodge*Max(0,DateDiff(s.Start,Min(nextDay,e)))+s.Mie*(DateDiff(s.Start,nextDay)-If(s.Start=d,0.25,0)-If(nextDay=DateAdd(e,1),0.25,0))))+vTransport+vOther+vParking+vResort,2),Round(vTransport+vOther,2)),Status:\"Draft\"})); Navigate(Queue))),Notify(\"Could not save. Check dates, costs and permissions.\",NotificationType.Error))"
+- SubmitTrip:
+    Control: Classic/Button@2.2.0
+    Properties:
+      Text: "=\"Submit\""
+      X: "=170"
+      Y: "=652"
+      Width: "=130"
+      Height: "=38"
+      Fill: "=ColorValue(\"#21409A\")"
+      Color: "=Color.White"
+      OnSelect: "=IfError(With({d:DateValue(Departure.Text,\"en-US\"),e:DateValue(ReturnDate.Text,\"en-US\"),vTransport:Coalesce(Value(Transportation.Text),0),vOther:Coalesce(Value(Other.Text),0),vParking:If(Trip.Selected.Value=\"Overnight\",Coalesce(Value(Parking.Text),0),0),vResort:If(Trip.Selected.Value=\"Overnight\",Coalesce(Value(Resort.Text),0),0)},If(Min(vTransport,vOther,vParking,vResort)<0 || IsBlank(Trim(Traveler.Text)) || IsBlank(Trim(Supervisor.Text)) || IsBlank(Trim(Purpose.Text)) || IsBlank(Trim(Categories.Text)) || (!IsBlank(Trim(Email.Text)) && !IsMatch(Trim(Email.Text),Match.Email)) || (Org.Selected.Value=\"Subcontractor\" && IsBlank(Trim(Company.Text))) || IsEmpty(Stops) || Min(Stops,Start)<>d || Max(Stops,Start)>e || CountRows(Distinct(Stops,Start))<>CountRows(Stops) || If(Trip.Selected.Value=\"Same-Day\",d<>e,d>=e || CountIf(Stops,IsBlank(Lodge)||IsBlank(Mie))>0),Notify(\"Check required fields, dates, itinerary and costs.\",NotificationType.Error),Set(r,Patch(GTASRequests,If(IsBlank(r),Defaults(GTASRequests),r),{Traveler:Trim(Traveler.Text),TravelerEmail:Trim(Email.Text),Supervisor:Trim(Supervisor.Text),Organization:Org.Selected.Value,Company:If(Org.Selected.Value=\"Subcontractor\",Trim(Company.Text),Blank()),Purpose:Trim(Purpose.Text),Categories:Categories.Text,TravelRegion:Scope.Selected.Value,TripType:Trip.Selected.Value,Departure:Departure.Text,ReturnDate:ReturnDate.Text,ItineraryJson:JSON(Stops,JSONFormat.Compact),Transportation:vTransport,Parking:vParking,Resort:vResort,OtherCost:vOther,Authorized:If(Trip.Selected.Value=\"Overnight\",Round(Sum(Stops As s,With({nextDay:Coalesce(Min(Filter(Stops,Start>s.Start),Start),DateAdd(e,1))},s.Lodge*Max(0,DateDiff(s.Start,Min(nextDay,e)))+s.Mie*(DateDiff(s.Start,nextDay)-If(s.Start=d,0.25,0)-If(nextDay=DateAdd(e,1),0.25,0))))+vTransport+vOther+vParking+vResort,2),Round(vTransport+vOther,2)),Status:\"Submitted\"})); Navigate(Queue))),Notify(\"Could not save. Check dates, costs and permissions.\",NotificationType.Error))"
