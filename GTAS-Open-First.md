@@ -1,51 +1,25 @@
-# Open GTAS.msapp
+# GTAS tenant-based rebuild
 
-GTAS.msapp is a native canvas-app file packaged with Microsoft Power Platform CLI 2.15.1 using its SourceCode layout. It contains 15 screens, the app formulas, and a native attachments form. Download the file itself from GitHub using Download raw file.
+Use GTAS-Tenant-Rebuilt.msapp. GTAS.msapp is an identical copy.
 
-## Open and configure
+This replaces the earlier YAML-only package that failed to open. It was rebuilt from the actual app export you supplied on November 16, preserving its native control templates, authoring metadata, and SharePoint connection definition.
 
-1. Open Power Apps Studio in your authorized development environment.
-2. Use Open / Browse to select GTAS.msapp.
-3. Add SharePoint connections to the six lists below, using the list names exactly as shown.
-4. Run App.OnStart, inspect App Checker, and resolve connection, formula or control-version issues reported by your tenant.
-5. Deploy the service-owned command processor and apply the permissions in the PowerApps-v2 deployment guide.
-6. Validate with separate traveler and approver accounts before saving and publishing.
+## Open
+1. Download the new .msapp file, then open it from Power Apps Studio in your authorized development environment.
+2. The original connected request screen opens first. Reauthorize its existing SharePoint connection if requested.
+3. Select **GTAS workspace** to reach the additional 15 workflow screens.
+4. Before using that expanded workflow, connect GTASDraftsV2, GTASRequestsV2, GTASCommandsV2, GTASAccessV2, GTASRatesV2, and GTASPolicyV2. Follow GTAS/PowerApps-v2/README.md for schema and deployment requirements.
+5. Review App Checker and test with separate traveler and approver accounts before publishing.
 
-Required data sources:
+## Verification and limits
+- Microsoft canvas packaging library loaded the modified sources and generated the native app with zero errors. Its source-checksum warning is expected after editing.
+- The generated file was successfully loaded and unpacked again with zero errors.
+- ZIP integrity passed; 17 native control documents contain App plus 16 screens, with unique control IDs.
+- Corrected gallery metadata, Segoe UI font references, and the Documents form layout.
+- These checks do not validate Power Apps Studio import, Power Fx binding, connector operations, or account isolation. Studio import remains unverified.
+- Six additional list bindings, Power Automate deployment, and server-enforced permissions remain tenant setup. Reference flow logic is not a deployed approval flow.
+- The original connected screen and its permissions are preserved; this rebuild does not establish traveler isolation.
+- This file includes the tenant connection metadata from your export. It is not a tenant-neutral template.
+- The original export was not modified.
 
-- GTASDraftsV2
-- GTASRequestsV2
-- GTASCommandsV2
-- GTASAccessV2
-- GTASRatesV2
-- GTASPolicyV2
-
-The companion guide is in GTAS/PowerApps-v2/README.md in Travel-Repo. The service-only ledger is configured by that deployment process and is not connected directly to the app.
-
-## What is included
-
-The file contains the native traveler, trip, itinerary, transportation, expenses, document, submission, processing, request, approval, coordinator and report screens. The attachments form is already present in this file, so skip the manual form-insertion step in the earlier source handoff.
-
-The file deliberately contains no tenant-specific connection credentials or live SharePoint URLs. Data-source references remain unresolved until the six target lists are connected. Power Automate flows and SharePoint permissions are external dependencies and are not carried inside a standalone canvas-app file.
-
-## Verification performed
-
-- Microsoft CLI pack succeeded.
-- Microsoft CLI unpack of the resulting file succeeded.
-- All 17 app/screen/editor YAML files were preserved byte-for-byte through the pack/unpack round trip.
-- ZIP integrity checks passed, and packed.json enables loading the native YAML source.
-- App and screen documents passed the applicable Microsoft v3 source-schema constraints. The upstream schema contains an invalid regular expression in an unused code-component definition, so schema meta-validation was skipped. No code components are used.
-- Studio import, formula binding against the six real lists, connector execution and tenant access isolation have not been tested here.
-
-File SHA-256:
-4f4b7a8f971664df90f6ab3e83a1ca3592c7bbaa7a51b64eb177487e5a4c9023
-
-## Attribution
-
-The packaging reference uses standard metadata from Microsoft's MIT-licensed PowerApps-Tooling fixtures. The accompanying Microsoft-Tooling-LICENSE.txt retains that license.
-
-[Microsoft canvas pack and unpack documentation](https://learn.microsoft.com/power-platform/developer/cli/reference/canvas)
-
-## Import correction — November 16, 2026
-
-Added the required Layout: Vertical setting to DocumentsForm to address Studio PA1011 at Documents.pa.yaml line 153. The corrected archive was checked for integrity and all unrelated entries were preserved byte-for-byte. The original CLI pack/unpack checks predate this repair. Studio import of this corrected version still requires verification.
+SHA-256: 08225847b871bfad12e3ef49f7a3cb5316ac0ad26aeacc02fcc9d409b5130320
