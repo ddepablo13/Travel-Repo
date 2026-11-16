@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NNSA | GTAS Travel Authorization</title>
+<style>
+/* Hallmark: request workspace, evergreen masthead, ivory canvas, champagne rule. */
+/* Review: the form and request index take precedence over decorative surfaces. */
+:root{color-scheme:light;--mast:#0b2b26;--accent:#1b4332;--ivory:#f7f5ef;--glass:#ffffffdb;--sage:#e3eadf;--champagne:#c9ad7f;--ink:#242a30;--muted:#495b5e;--line:#d5ded7;--white:#fff;--halo:#1b43321a;--font:"Segoe UI",system-ui,sans-serif}
+*{box-sizing:border-box}html,body{overflow-x:clip}body{margin:0;background:var(--ivory);color:var(--ink);font:16px/1.5 var(--font)}main{max-width:1440px;margin:auto;padding:16px}header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;border-radius:12px;background:var(--mast);border-bottom:3px solid var(--champagne);color:var(--white);min-height:80px}header strong{font-size:21px;min-width:0;overflow-wrap:break-word}.short{display:none}button,input,textarea{font:inherit}button{cursor:pointer;background:var(--accent);color:var(--white);border:1px solid var(--accent);border-radius:7px;padding:9px 14px}button:hover{background:var(--mast)}header button{border-color:var(--champagne);flex:none;font-size:14px}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--champagne);outline-offset:3px}.hint{font-size:14px;color:var(--muted);margin:12px 0}.layout{display:grid;grid-template-columns:minmax(235px,3fr) minmax(0,7fr);gap:16px}.panel{min-width:0;border:1px solid var(--line);border-radius:12px;padding:20px;background:var(--glass);box-shadow:0 6px 20px var(--halo);backdrop-filter:blur(10px)}h1,h2,p{margin:0}h1{font-size:clamp(22px,3vw,32px);line-height:1.2}h2{font-size:19px}.bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:16px}input,textarea{max-width:100%;width:100%;border:1px solid var(--muted);color:var(--ink);background:var(--white);border-radius:6px;padding:8px 10px;min-width:0}.row{width:100%;text-align:left;background:transparent;color:var(--ink);border:0;border-bottom:1px solid var(--line);border-radius:0;padding:14px 10px}.row:hover,.row[aria-pressed=true]{background:var(--sage)}.row[aria-pressed=true]{box-shadow:inset 3px 0 var(--accent)}.row small{display:block;color:var(--muted)}.status{background:var(--sage);color:var(--mast);border-radius:6px;padding:3px 9px;font-size:14px}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}label{display:grid;gap:4px;font-size:14px;font-weight:600}.wide{grid-column:1/-1}.secondary{background:var(--white);color:var(--accent)}.secondary:hover{background:var(--sage)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}[hidden]{display:none!important}@media(max-width:700px){.layout,.fields{grid-template-columns:minmax(0,1fr)}.panel{padding:14px}}@media(max-width:520px){main{padding:10px}.full{display:none}.short{display:inline}}
+</style>
+</head>
+<body>
+<main>
+<header><strong><span class="full">NNSA / GTAS Travel Authorization</span><span class="short">NNSA | GTAS</span></strong><button id="switch" type="button">Travel workspace</button></header>
+<p class="hint">Sample requests for design review. Changes stay in this page.</p>
+<div id="requests" class="layout">
+<section class="panel" aria-labelledby="indexTitle">
+<div class="bar"><h2 id="indexTitle">Travel requests</h2><button type="button" id="new">New request</button></div>
+<label>Search requests<input type="search" id="search" placeholder="Search by title"></label>
+<div id="rows"><button type="button" class="row" aria-pressed="true">Program review<small>Sample request</small></button></div>
+<p id="empty" class="hint" hidden>No matching requests.</p>
+</section>
+<section class="panel" aria-labelledby="title">
+<div class="bar"><h1 id="title">Program review</h1><span class="status" id="status">Draft</span></div>
+<form id="record">
+<fieldset id="fields" style="border:0;padding:0;margin:0;min-width:0" disabled>
+<div class="fields">
+<label>Request title<input name="title" required value="Program review"></label>
+<label>Traveler<input name="traveler" required value="Alex Morgan"></label>
+<label>Departure<input type="date" name="departure" value="2026-12-08" required></label>
+<label>Return<input type="date" name="arrival" value="2026-12-10" required></label>
+<label class="wide">Purpose of travel<textarea rows="3" name="purpose">Attend the scheduled program review.</textarea></label>
+</div></fieldset>
+<div class="actions"><button type="button" id="edit">Edit request</button><button type="submit" id="save" hidden>Save draft</button><button type="button" id="cancel" class="secondary" hidden>Cancel</button></div>
+<p id="message" class="hint" role="status"></p>
+</form></section></div>
+<section id="workspace" class="panel" hidden>
+<div class="bar"><h1>My requests</h1><button id="workspaceNew" type="button">New request</button></div>
+<p>Your saved drafts and submitted travel authorizations.</p>
+<div id="workspaceRows" class="actions"></div>
+</section>
+</main>
+<script>
+const byId = (id) => document.getElementById(id);
+const records = [
+  {title:'Program review', traveler:'Alex Morgan', departure:'2026-12-08', arrival:'2026-12-10', purpose:'Attend the scheduled program review.', status:'Draft'},
+  {title:'Site coordination meeting', traveler:'Alex Morgan', departure:'2026-12-14', arrival:'2026-12-15', purpose:'Coordinate the upcoming site visit.', status:'Submitted'}
+];
+const form = byId('record');
+let active = 0;
+let editing = false;
+function showWorkspace(open) {
+  byId('requests').hidden = open;
+  byId('workspace').hidden = !open;
+  byId('switch').textContent = open ? 'Travel requests' : 'Travel workspace';
+}
+function renderRows() {
+  const query = byId('search').value.toLowerCase().trim();
+  byId('rows').replaceChildren();
+  byId('workspaceRows').replaceChildren();
+  let matches = 0;
+  records.forEach((record,index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'row';
+    button.setAttribute('aria-pressed', String(index === active));
+    button.append(record.title);
+    const meta = document.createElement('small');
+    meta.textContent = record.status;
+    button.append(meta);
+    button.addEventListener('click', () => { showWorkspace(false); showRecord(index); byId('title').focus(); });
+    const shortcut = document.createElement('button');
+    shortcut.type = 'button';
+    shortcut.className = 'secondary';
+    shortcut.textContent = record.title;
+    shortcut.addEventListener('click', () => button.click());
+    byId('workspaceRows').append(shortcut);
+    if (record.title.toLowerCase().includes(query)) { matches++; byId('rows').append(button); }
+  });
+  byId('empty').hidden = matches > 0;
+}
+function editMode(enabled) {
+  editing = enabled;
+  byId('fields').disabled = !enabled;
+  byId('edit').hidden = enabled || records[active]?.status !== 'Draft';
+  byId('save').hidden = !enabled;
+  byId('cancel').hidden = !enabled;
+  if (enabled) form.elements.title.focus();
+}
+function showRecord(index) {
+  active = index;
+  const record = records[index];
+  byId('title').textContent = record?.title || 'New request';
+  byId('status').textContent = record?.status || 'Draft';
+  byId('message').textContent = '';
+  for (const name of ['title','traveler','departure','arrival','purpose']) form.elements[name].value = record?.[name] || '';
+  form.elements.arrival.setCustomValidity('');
+  editMode(!record);
+  renderRows();
+}
+byId('title').tabIndex = -1;
+byId('search').addEventListener('input', renderRows);
+byId('switch').addEventListener('click', () => showWorkspace(byId('workspace').hidden));
+for (const id of ['new','workspaceNew']) byId(id).addEventListener('click', () => {showWorkspace(false);showRecord(-1);});
+byId('edit').addEventListener('click', () => editMode(true));
+byId('cancel').addEventListener('click', () => showRecord(Math.max(active,0)));
+form.addEventListener('input', () => form.elements.arrival.setCustomValidity(''));
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (!editing) return;
+  const record = Object.fromEntries(new FormData(form));
+  if (record.arrival < record.departure) {
+    form.elements.arrival.setCustomValidity('Return must be on or after departure.');
+    form.elements.arrival.reportValidity();
+    return;
+  }
+  if (!record.title.trim() || !record.traveler.trim()) {
+    byId('message').textContent = 'Enter a request title and traveler.';
+    return;
+  }
+  record.status = 'Draft';
+  if (active < 0) {records.push(record);active = records.length-1;} else records[active] = record;
+  byId('search').value = '';
+  showRecord(active);
+  byId('message').textContent = 'Draft saved in this preview.';
+});
+showRecord(0);
+</script>
+</body>
+</html>
