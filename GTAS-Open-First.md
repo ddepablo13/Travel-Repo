@@ -38,10 +38,14 @@ The file deliberately contains no tenant-specific connection credentials or live
 - Studio import, formula binding against the six real lists, connector execution and tenant access isolation have not been tested here.
 
 File SHA-256:
-cb5be9b4456ee1b69e1ae23845808d5ad0f3f4d692118bf3e78e7cbdf762d9e6
+4f4b7a8f971664df90f6ab3e83a1ca3592c7bbaa7a51b64eb177487e5a4c9023
 
 ## Attribution
 
 The packaging reference uses standard metadata from Microsoft's MIT-licensed PowerApps-Tooling fixtures. The accompanying Microsoft-Tooling-LICENSE.txt retains that license.
 
 [Microsoft canvas pack and unpack documentation](https://learn.microsoft.com/power-platform/developer/cli/reference/canvas)
+
+## Import correction — November 16, 2026
+
+Added the required Layout: Vertical setting to DocumentsForm to address Studio PA1011 at Documents.pa.yaml line 153. The corrected archive was checked for integrity and all unrelated entries were preserved byte-for-byte. The original CLI pack/unpack checks predate this repair. Studio import of this corrected version still requires verification.
